@@ -1,29 +1,30 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/booktravel/index",
     "pages/logs/logs",
-    "pages/page2/page2",
-    "pages/page3/page3"
+    "pages/libraryshelves/index",
+    "pages/mybooks/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#6A7D8F",
+    "navigationBarTitleText": "流动图书馆",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FAFAFA"
   },
   "tabBar" : {
     "list" : [{
-      "pagePath" : "pages/index/index",
+      "pagePath" : "pages/booktravel/index",
       "text" : "图书漂流",
       "iconPath" : "images/general.png",
       "selectedIconPath" : "images/click.png"
       },{
-        "pagePath" : "pages/page2/page2",
+        "pagePath" : "pages/booktravel/index",
         "text" : "借阅书架",
         "iconPath" : "images/general.png",
         "selectedIconPath" : "images/click.png"
       },{
-        "pagePath": "pages/page3/page3",
+        "pagePath": "pages/mybooks/index",
         "text": "我的图书",
         "iconPath": "images/general.png",
         "selectedIconPath": "images/click.png"
