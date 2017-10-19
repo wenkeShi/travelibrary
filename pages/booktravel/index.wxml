@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="map-localize">
+  <text class="position">位置</text>
+</view>
+<view class="main">
+  <view class='introduce'>
+    <view class='paragraph'>流动图书馆是一个图书漂流和借阅工具，旨在共享闲置图书，并链接趣味相投的小伙伴。</view>
+    <view class='paragraph'>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</view>
+  </view>
+  <view class='scan'>
+    <button class='scan-btn'>扫一扫漂流图书</button>
+  </view>
+</view>
+
+
+
+
+
+
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <button class="get-phone-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">使用手机号注册</button>  
+</view>
+<view class="box">
+  other
+</view>
