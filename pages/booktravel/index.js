@@ -55,5 +55,12 @@ Page({
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
     console.log(e.detail.encryptedData)
-  }
+  },
+  scanBook : function (e) {
+    wx.scanCode({
+      success : (res) => {
+        console.log(res);
+      },
+    });
+  },
 })

@@ -8,8 +8,22 @@
     <view class='paragraph'>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</view>
   </view>
   <view class='scan'>
-    <button class='scan-btn'>扫一扫漂流图书</button>
+    <button class='scan-btn' bindtap="scanBook">扫一扫漂流图书</button>
   </view>
+</view>
+<view class='new-books'>
+  <view class='new-books-header'>
+    <text class="new-books-header-title">新书速递</text>
+    <text class="new-books-all">全部 ></text>
+  </view>
+  <scroll-view scroll-x="true" class="new-books-content" style="white-space: nowrap">
+    <image src="../../images/books/book.jpg" class="new-book"></image>
+    <image src="../../images/books/book.jpg" class="new-book">></image>
+    <image src="../../images/books/book.jpg" class="new-book">></image>
+    <image src="../../images/books/book.jpg" class="new-book">></image>
+    <image src="../../images/books/book.jpg" class="new-book">></image>
+    <image src="../../images/books/book.jpg" class="new-book">></image> 
+  </scroll-view>
 </view>
 
 
@@ -17,7 +31,8 @@
 
 
 
-<view class="container">
+
+<!-- <view class="container">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -32,4 +47,4 @@
 </view>
 <view class="box">
   other
-</view>
+</view> -->

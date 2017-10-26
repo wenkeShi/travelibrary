@@ -2,10 +2,10 @@
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
+    var logs = wx.getStorageSync('logs') || [];
+    logs.unshift(Date.now());
+    wx.setStorageSync('logs', logs);
+    // var sessionId = wx.getStorageSync('sessionId');
     // 登录
     wx.login({
       success: res => {
@@ -16,6 +16,7 @@ App({
             data: {
               code: res.code,
             },
+            // header :{sessionId:sessionId},
             success:function(res){
               if(res.statusCode==200){
                 console.log(res.data);

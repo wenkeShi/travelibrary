@@ -38,10 +38,11 @@
   align-items: center;
 }
 .main{
-  margin: 5%;
+  margin: 2%;
+  margin-top: 0;
   background-color: #fff;
   border-radius : 3px;
-  box-shadow: 0 1px 2px #666;
+  box-shadow: 0 1px 5px #666;
 }
 .introduce{
   width: 94%;
@@ -65,4 +66,26 @@
   background-color:#27272A;
   color:#fff;
   border-radius:30px;
+}
+.new-books .new-books-header{
+  display: flex;
+  justify-content: space-between;
+  margin: 30rpx 0;
+}
+.new-books .new-books-header .new-books-header-title{
+  margin-left: 2%;
+  color: #363636;
+  font-weight: bold;
+  font-size: 16px;
+}
+.new-books .new-books-header .new-books-all{
+  margin-right: 2%;
+  text-align: right;
+  font-size: 14px;
+  color: #BBBBBB;
+}
+.new-book{
+  margin:0 5rpx;
+  width: 100px;
+  height: 150px;
 }
