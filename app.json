@@ -3,7 +3,9 @@
     "pages/booktravel/index",
     "pages/logs/logs",
     "pages/libraryshelves/index",
-    "pages/mybooks/index"
+    "pages/mybooks/index",
+    "pages/booktravel/bookdetails/index",
+    "pages/booktravel/error/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,22 +14,26 @@
     "navigationBarTextStyle": "white",
     "backgroundColor": "#FAFAFA"
   },
-  "tabBar" : {
-    "list" : [{
-      "pagePath" : "pages/booktravel/index",
-      "text" : "图书漂流",
-      "iconPath" : "images/general.png",
-      "selectedIconPath" : "images/click.png"
-      },{
-        "pagePath" : "pages/booktravel/index",
-        "text" : "借阅书架",
-        "iconPath" : "images/general.png",
-        "selectedIconPath" : "images/click.png"
-      },{
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/booktravel/index",
+        "text": "图书漂流",
+        "iconPath": "images/general.png",
+        "selectedIconPath": "images/click.png"
+      },
+      {
+        "pagePath": "pages/booktravel/index",
+        "text": "借阅书架",
+        "iconPath": "images/general.png",
+        "selectedIconPath": "images/click.png"
+      },
+      {
         "pagePath": "pages/mybooks/index",
         "text": "我的图书",
         "iconPath": "images/general.png",
         "selectedIconPath": "images/click.png"
-      }]
+      }
+    ]
   }
 }

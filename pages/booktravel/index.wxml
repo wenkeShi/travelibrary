@@ -17,7 +17,7 @@
     <text class="new-books-all">全部 ></text>
   </view>
   <scroll-view scroll-x="true" class="new-books-content" style="white-space: nowrap">
-    <image src="../../images/books/book.jpg" class="new-book"></image>
+    <image src="https://img3.doubanio.com\/spic\/s1747553.jpg" class="new-book"></image>
     <image src="../../images/books/book.jpg" class="new-book">></image>
     <image src="../../images/books/book.jpg" class="new-book">></image>
     <image src="../../images/books/book.jpg" class="new-book">></image>

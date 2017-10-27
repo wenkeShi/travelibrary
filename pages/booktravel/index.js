@@ -60,6 +60,15 @@ Page({
     wx.scanCode({
       success : (res) => {
         console.log(res);
+        if (res.scanType === 'EAN_13'){
+          wx.navigateTo({
+            url: './bookdetails/index?isbn=' + res.result,
+          });
+        }else{
+          wx.navigateTo({
+            url: './error/index',
+          });
+        }
       },
     });
   },
