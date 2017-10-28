@@ -1,2 +1,14 @@
 <!--pages/booktravel/bookdetails/index.wxml-->
-<text>pages/booktravel/bookdetails/index.wxml</text>
+<view class="book-detail-header">
+  <image src="{{bookSrc}}" class="book-image"></image>
+  <view class="book-detail-author">
+    <text class="title">{{title}}</text>
+    <text class="author">{{author}}</text>
+    <text class="look-reviews">查看豆瓣评价</text>
+  </view>
+</view>
+<view class="book-summary">
+  <text class="book-summary-header">图书简介</text>
+  <view class="book-summary-content">{{summary}}</view>
+</view>
+<button class="publish">确定发布</button>

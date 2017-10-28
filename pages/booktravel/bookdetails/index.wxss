@@ -1,1 +1,63 @@
 /* pages/booktravel/bookdetails/index.wxss */
+.book-detail-header{
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+.book-detail-header .book-image{
+  width: 100px;
+  height: 150px;
+  margin-left: 20px;
+  box-shadow: 2px 2px 2px rgb(200,200,200);
+}
+.book-detail-header .book-detail-author{
+  display: inline-block;
+  margin-left: 10px;
+}
+.book-detail-header .book-detail-author .title{
+  display: block;
+  color: rgb(61,61,61);
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+.book-detail-header .book-detail-author .author{
+  display: block;
+  color: rgb(116,177,187);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.book-detail-header .book-detail-author .look-reviews{
+  display: block;
+  font-size: 14px;
+}
+
+.book-summary{
+  padding-top: 20px;
+}
+.book-summary .book-summary-header{
+  color: rgb(61,61,61);
+  font-weight: bold;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+.book-summary .book-summary-content{
+  border-top: 1px solid rgb(200,200,200);
+  border-bottom: 1px solid rgb(200,200,200);
+  font-size: 12px;
+  color: rgb(135,135,135);
+  line-height: 25px;
+  padding: 10px 10px;
+}
+.publish{
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color:  rgb(13,118,161);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  border-radius: 0;
+}

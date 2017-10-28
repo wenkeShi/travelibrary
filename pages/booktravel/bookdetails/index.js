@@ -5,14 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    bookSrc : '',
+    author : '',
+    title : '',
+    summary : '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options);
+    let isbn = options.isbn
+    wx.request({
+      url: 'https://api.douban.com/v2/book/isbn/'+isbn,
+      header: {
+        'Content-Type' : 'json', //一个坑，必须要设为json
+      },
+      success: (res) => {
+        console.log(res.data);
+        let data = res.data;
+        this.setData({
+          bookSrc : data.image,
+          author : data.author[0],
+          title : data.title,
+          summary : data.summary,
+        });
+      }
+    })
   },
 
   /**
