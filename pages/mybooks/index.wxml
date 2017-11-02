@@ -1,2 +1,119 @@
 <!--pages/page3/page3.wxml-->
-<text>pages/page3/page3.wxml</text>
+<view class="user-info">
+  <block wx:if="{{userInfo}}">
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </block>
+</view>
+<view class="user-books">
+  <scroll-view class="tab" scroll-x="true">
+    <view class="tab-item {{currentTab == 0 ? 'active':''}}" bindtap="switchNav" data-current="0">借阅的图书</view>
+    <view class="tab-item {{currentTab == 1 ? 'active':''}}" bindtap="switchNav" data-current="1">发布的图书</view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab">
+    <swiper-item>
+      <scroll-view class="container" scroll-y="true">
+        <view class="content">
+          <image class="book-image" src="../../images/books/book.jpg"></image>
+          <view class="book-introduce">
+            <view class="title">Are you okay?</view>
+            <view class="author">作者:okken</view>
+            <view class="press">出版社:somePress</view>
+            <view class="status">
+              <view class="status-btn">申请借阅中...</view>
+              <text class="status-opr">归还书籍</text>
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <image class="book-image" src="../../images/books/book.jpg"></image>
+          <view class="book-introduce">
+            <view class="title">Are you okay?</view>
+            <view class="author">作者:okken</view>
+            <view class="press">出版社:somePress</view>
+            <view class="status">
+              <view class="status-btn">申请借阅中...</view>
+              <text class="status-opr">归还书籍</text>
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <image class="book-image" src="../../images/books/book.jpg"></image>
+          <view class="book-introduce">
+            <view class="title">Are you okay?</view>
+            <view class="author">作者:okken</view>
+            <view class="press">出版社:somePress</view>
+            <view class="status">
+              <view class="status-btn">申请借阅中...</view>
+              <text class="status-opr">归还书籍</text>
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <image class="book-image" src="../../images/books/book.jpg"></image>
+          <view class="book-introduce">
+            <view class="title">Are you okay?</view>
+            <view class="author">作者:okken</view>
+            <view class="press">出版社:somePress</view>
+            <view class="status">
+              <view class="status-btn">申请借阅中...</view>
+              <text class="status-opr">归还书籍</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="container" scroll-y="true">
+        <view class="content">
+          <image class="book-image" src="../../images/books/book.jpg"></image>
+          <view class="book-introduce">
+            <view class="title">Are you okay?</view>
+            <view class="author">作者:okken</view>
+            <view class="press">出版社:somePress</view>
+            <view class="status">
+              <view class="status-btn">申请借阅中...</view>
+              <text class="status-opr">归还书籍</text>
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <image class="book-image" src="../../images/books/book.jpg"></image>
+          <view class="book-introduce">
+            <view class="title">Are you okay?</view>
+            <view class="author">作者:okken</view>
+            <view class="press">出版社:somePress</view>
+            <view class="status">
+              <view class="status-btn">申请借阅中...</view>
+              <text class="status-opr">归还书籍</text>
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <image class="book-image" src="../../images/books/book.jpg"></image>
+          <view class="book-introduce">
+            <view class="title">Are you okay?</view>
+            <view class="author">作者:okken</view>
+            <view class="press">出版社:somePress</view>
+            <view class="status">
+              <view class="status-btn">申请借阅中...</view>
+              <text class="status-opr">归还书籍</text>
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <image class="book-image" src="../../images/books/book.jpg"></image>
+          <view class="book-introduce">
+            <view class="title">Are you okay?</view>
+            <view class="author">作者:okken</view>
+            <view class="press">出版社:somePress</view>
+            <view class="status">
+              <view class="status-btn">申请借阅中...</view>
+              <text class="status-opr">归还书籍</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

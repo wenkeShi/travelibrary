@@ -1,4 +1,5 @@
 // pages/booktravel/bookdetails/index.js
+console.log('bookDetails');
 Page({
 
   /**

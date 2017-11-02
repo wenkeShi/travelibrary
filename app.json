@@ -23,7 +23,7 @@
         "selectedIconPath": "images/click.png"
       },
       {
-        "pagePath": "pages/booktravel/index",
+        "pagePath": "pages/libraryshelves/index",
         "text": "借阅书架",
         "iconPath": "images/general.png",
         "selectedIconPath": "images/click.png"

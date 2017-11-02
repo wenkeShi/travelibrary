@@ -1,20 +1,55 @@
 // pages/page3/page3.js
+const APP = getApp();
+//在应用启动时，所有页面在Page之外的代码都会执行
+// const USERINFO = APP.globalData.userInfo;
+// console.log("books---------------"+USERINFO);
 Page({
 
   /**
    * 页面的初始数据
    */
+  //初始值会在页面被加载之前就被赋值
   data: {
-  
+    userInfo: null,
+    currentTab : 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(this);
+    console.log('onLoad--------' + this.data.userInfo);
+    // wx.getUserInfo({
+    //   sucesss : (data) => {
+    //     console.log(data);
+    //   }
+    // });
+    // let that = this;
+    // APP.getUserInfo((userInfo) => {
+    //   that.setData({
+    //     userInfo : userInfo,
+    //   });
+    // });
+    // console.log(APP.globalData.userInfo);
+    // console.log(USERINFO);
+    this.setData({
+      userInfo: APP.globalData.userInfo,
+    });
   },
-
+  switchTab : function(e){
+    console.log(this);
+    let current = e.detail.current;
+    this.setData({
+      currentTab : current,
+    });
+  },
+  switchNav : function(e){
+    console.log(e.target.dataset);
+    this.setData({
+      currentTab: e.target.dataset.current,
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
