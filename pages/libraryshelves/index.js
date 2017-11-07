@@ -123,5 +123,8 @@ Page({
       }
     });
   },
-  footerTap: app.footerTap
+  // footerTap: app.footerTap
+  footerTap : function (){
+    
+  }
 })

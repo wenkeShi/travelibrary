@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const request = require('../../libs/sessions/session-request.js');
 
 Page({
   data: {
@@ -16,6 +17,22 @@ Page({
     })
   },
   onLoad: function () {
+    // request({
+    //   url: 'https://liudongtushuguan.cn/login',
+    //   method: 'GET',
+
+    //   success(data) {
+    //     console.log('success', data);
+    //   },
+
+    //   fail(error) {
+    //     console.log('error', error);
+    //   },
+
+    //   complete(what) {
+    //     console.log('complete', what);
+    //   },
+    // });
     if (app.globalData.userInfo) {
       this.setData({
         hasUserInfo: true,
