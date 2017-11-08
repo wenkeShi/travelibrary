@@ -1,4 +1,5 @@
 <!--pages/page3/page3.wxml-->
+<import src="../../components/rater/rater.wxml"/>
 <view class="user-info">
   <block wx:if="{{userInfo}}">
     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
@@ -17,6 +18,12 @@
           <image class="book-image" src="../../images/books/book.jpg"></image>
           <view class="book-introduce">
             <view class="title">Are you okay?</view>
+                    <view class="weui-cell">
+                <view class="weui-cell__bd">set default score = 5</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.star }}"/>
+                </view>
+            </view>
             <view class="author">作者:okken</view>
             <view class="press">出版社:somePress</view>
             <view class="status">

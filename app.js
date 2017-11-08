@@ -7,7 +7,6 @@ App({
     console.log(sessionId);
     logs.unshift(Date.now());
     wx.setStorageSync('logs', logs);
-    // var sessionId = wx.getStorageSync('sessionId');
     // 登录
     if(sessionId){
       wx.request({
@@ -36,6 +35,19 @@ App({
                 if (res.statusCode == 200) {
                   console.log(res.data);
                   wx.setStorageSync('sessionId',res.data.data.sessionId);
+                  let sessionId = wx.getStorageSync('sessionId');
+                  console.log('sessionId-------'+sessionId);
+                  wx.request({
+                    url: 'https://liudongtushuguan.cn/login',
+                    header: {
+                      sessionId: sessionId,
+                    },
+                    success: function (res) {
+                      if (res.statusCode == 200) {
+                        console.log(res.data);
+                      }
+                    },
+                  });
                 }
               },
             });

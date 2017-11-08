@@ -77,7 +77,7 @@ Page({
     wx.scanCode({
       success : (res) => {
         console.log(res);
-        if (res.scanType === 'EAN_13'){
+        if (res.scanType === 'EAN_13' || res.scanType === 'EAN_10'){
           wx.navigateTo({
             url: './bookdetails/index?isbn=' + res.result,
           });

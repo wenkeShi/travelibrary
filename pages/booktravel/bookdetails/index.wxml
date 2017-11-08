@@ -1,6 +1,6 @@
 <!--pages/booktravel/bookdetails/index.wxml-->
 <view class="book-detail-header">
-  <image src="{{bookSrc}}" class="book-image"></image>
+  <image src="{{bookImageSrc}}" class="book-image"></image>
   <view class="book-detail-author">
     <text class="title">{{title}}</text>
     <text class="author">{{author}}</text>
@@ -11,4 +11,4 @@
   <text class="book-summary-header">图书简介</text>
   <view class="book-summary-content">{{summary}}</view>
 </view>
-<button class="publish">确定发布</button>
+<button class="publish" bindtap="publishBook">确定发布</button>

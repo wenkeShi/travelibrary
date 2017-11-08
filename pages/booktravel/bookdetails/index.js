@@ -1,4 +1,5 @@
-// pages/booktravel/bookdetails/index.js
+// pages/booktravel/bookdetails/index.jscon
+const  request = require('../../../utils/util').request;
 console.log('bookDetails');
 Page({
 
@@ -6,10 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bookSrc : '',
-    author : '',
+    isbn : '',
     title : '',
+    press : '',
+    author: '',
+    bookImageSrc : '',
+    tags : '',
     summary : '',
+    rate : '',
   },
 
   /**
@@ -26,13 +31,79 @@ Page({
       success: (res) => {
         console.log(res.data);
         let data = res.data;
+        let tags = '';
+        data.tags.forEach((v)=>{
+          tags += v.name;
+        });
+        console.log(tags);
         this.setData({
-          bookSrc : data.image,
-          author : data.author[0],
-          title : data.title,
+          isbn: isbn,
+          title: data.title,
+          press: data.publisher,
+          author: data.author[0],
+          bookImageSrc : data.image,
+          tags : tags,
           summary : data.summary,
+          rate: data.rating.average,
         });
       }
+    })
+  },
+  publishBook: function (){
+    console.log(this.data);
+    let bookData = this.data;
+    wx.showToast({
+      title: '发布中...',
+      icon : 'loading',
+      mask : false,
+      success : function(){
+        request({
+          url: 'https://liudongtushuguan.cn/publish',
+          method: 'POST',
+          data: bookData,
+          success: (res) => {
+            if (res.statusCode === 200) {
+              wx.showToast({
+                title: '发布成功',
+                icon: 'success',
+                success : function(){
+                  setTimeout(() => {
+                    wx.switchTab({
+                      url: '../../mybooks/index',
+                    });
+                  }, 1000);
+                }
+              })
+            }else{
+              wx.showToast({
+                title: '发布失败',
+                icon: 'success',
+                success: function () {
+                  setTimeout(() => {
+                    wx.switchTab({
+                      url: '../../mybooks/index',
+                    });
+                  }, 1000);
+                }
+              })
+            }
+          },
+          fail : () => {
+            wx.showToast({
+              title: '发布失败',
+              icon: 'success',
+              success: function () {
+                setTimeout(() =>{
+                  wx.switchTab({
+                    url: '../../mybooks/index',
+                  });
+                },1000);
+              },
+            });
+          },
+        });
+      },
+
     })
   },
 

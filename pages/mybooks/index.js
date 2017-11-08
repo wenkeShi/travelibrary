@@ -18,6 +18,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.$wuxRater = App.wux(this).$wuxRater
+    this.$wuxRater.render('star', {
+      value: 5,
+    })
     console.log(this);
     console.log('onLoad--------' + this.data.userInfo);
     // wx.getUserInfo({
