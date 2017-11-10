@@ -1,4 +1,5 @@
 /* pages/page3/page3.wxss */
+@import  '../../components/wux.wxss';
 page{
   background-color:rgb(250,250,250);
 }
@@ -99,4 +100,8 @@ page{
     color: rgb(9,186,7);
     text-decoration: underline;
     margin-left: 40rpx;
+  }
+
+  .wux-rater{
+    display: inline-block;
   }

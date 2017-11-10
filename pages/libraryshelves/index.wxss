@@ -100,3 +100,13 @@
 .scoll-h {
   height: 100%;
 }
+.book{
+  display: inline-block;
+  margin: 20rpx;
+}
+.book-image{
+  width: 200rpx;
+  height: 300rpx;
+  box-shadow: 0rpx 0rpx 50rpx #aaa;
+  margin-right: 40rpx;
+ }

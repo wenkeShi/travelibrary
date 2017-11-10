@@ -65,6 +65,8 @@
 //   }
 // })
 var app = getApp();
+const request = require('../../utils/util.js').request;
+const URL = 'https://liudongtushuguan.cn/';
 Page({
   data: {
     winHeight: "",//窗口高度
@@ -108,8 +110,11 @@ Page({
     }
   },
   onLoad: function () {
+    console.log('books-----------');
+    this.getBooks('all');
     var that = this;
     // 高度自适应
+
     wx.getSystemInfo({
       success: function (res) {
         var clientHeight = res.windowHeight,
@@ -126,5 +131,18 @@ Page({
   // footerTap: app.footerTap
   footerTap : function (){
     
-  }
+  },
+  getBooks : function(tag){
+    let that = this;
+    request({
+      url : URL+'books?tag='+tag ,
+      success : function(res){
+        if(res.statusCode === 200){
+          that.setData({
+            showBooks : res.data.books,
+          });
+        }
+      },
+    });
+  },
 })

@@ -1,6 +1,6 @@
 <!--pages/booktravel/bookdetails/index.wxml-->
 <view class="book-detail-header">
-  <image src="{{bookImageSrc}}" class="book-image"></image>
+  <image src="{{image}}" class="book-image"></image>
   <view class="book-detail-author">
     <text class="title">{{title}}</text>
     <text class="author">{{author}}</text>

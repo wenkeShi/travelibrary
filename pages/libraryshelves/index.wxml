@@ -1,7 +1,7 @@
 <!--pages/page2.wxml-->
 <view >
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">健康</view>
+    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">全部</view>
     <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">情感</view>
     <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">职场</view>
     <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">育儿</view>
@@ -12,7 +12,21 @@
   </scroll-view>
   <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
    style="height:{{winHeight}}rpx">
-    <swiper-item wx:for="{{[0,1,2,3,4,5,6,7]}}">
+
+
+    <swiper-item >
+      <scroll-view scroll-y="true" class="scoll-h" >
+        <view wx:for="{{showBooks}}" class="book">
+          <image src="{{item.iamge}}" class="book-image"></image>
+          <view class="book-title">{{item.title}}</view>
+          <view class="book-rate">{{item.rate}}</view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+
+
+    <swiper-item wx:for="{{[1,2,3,4,5,6,7]}}">
       <scroll-view scroll-y="true" class="scoll-h" >
         <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
           <view class="item-ans">
