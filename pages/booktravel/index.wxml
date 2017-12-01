@@ -1,28 +1,55 @@
 <!--index.wxml-->
-<view class="map-localize">
-  <text class="position">位置</text>
+<view class="borrow-msgs" wx:if="{{borrowMessage.length>0}}">
+  <view wx:for="{{borrowMessage}}" class="message">
+    <view class="msg-time">{{item.time}}</view>
+    <view class="msg-title">借书请求</view>
+    <view class="msg-content">
+      <view>
+        <text class="borrower">{{item.borrower}}</text> 请求借阅 <text class="book-name"> {{item.book}}</text>    
+      </view>
+      <view>
+        <text>微信号-</text> <text class="wxNum">{{item.wxNum}}</text>
+      </view>
+      <view>
+        <text>手机号-</text> <text class="phoneNum">{{item.phoneNum}}</text>
+      </view>
+      <view>
+        <text>留言-</text> <text class="borrower-msg">{{item.msg || '无留言'}}</text>
+      </view>
+    </view>
+    <view class="msg-operation">
+      <text class="reject" bindtap="respond" data-index="{{index}}" data-type="reject">拒绝借阅</text>
+      <button class="agree" bindtap="respond" data-index="{{index}}" data-type="agree">同意借阅</button>
+    </view>
+  </view>
 </view>
+<!-- <view class="map-localize">
+  <text class="position"></text>
+</view> -->
 <view class="main">
   <view class='introduce'>
     <view class='paragraph'>流动图书馆是一个图书漂流和借阅工具，旨在共享闲置图书，并链接趣味相投的小伙伴。</view>
-    <view class='paragraph'>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</view>
+    <view class='paragraph'>为保障用户的利益及安全，流动图书馆目前仅限于金山集团内部范围使用</view>
   </view>
   <view class='scan'>
-    <button class='scan-btn' bindtap="scanBook">扫一扫漂流图书</button>
+    <button class='scan-btn' bindtap="scanBook">
+    <image src="../../images/scan.png" class="scan-img"></image>扫一扫漂流图书
+    </button>
   </view>
 </view>
 <view class='new-books'>
   <view class='new-books-header'>
     <text class="new-books-header-title">新书速递</text>
-    <text class="new-books-all">全部 ></text>
+    <!-- <text class="new-books-all">全部 ></text> -->
   </view>
   <scroll-view scroll-x="true" class="new-books-content" style="white-space: nowrap">
-    <image src="https://img3.doubanio.com\/spic\/s1747553.jpg" class="new-book"></image>
+    <image wx:for="{{newBooks}}" src="{{item.image}}" bindtap="toBorrowBook" data-isbn="{{item.isbn}}" data-bookid="{{item._id}}" class="new-book"></image>
+    <!-- <image src="" class="new-book" class="new-book">></image> -->
+    <!-- <image src="../../images/books/book.jpg" class="new-book">></image>
     <image src="../../images/books/book.jpg" class="new-book">></image>
     <image src="../../images/books/book.jpg" class="new-book">></image>
     <image src="../../images/books/book.jpg" class="new-book">></image>
-    <image src="../../images/books/book.jpg" class="new-book">></image>
-    <image src="../../images/books/book.jpg" class="new-book">></image> 
+    <image src="../../images/books/book.jpg" class="new-book">></image>  -->
   </scroll-view>
 </view>
 

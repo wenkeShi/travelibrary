@@ -1,0 +1,29 @@
+.rater-component{
+   display: inline-flex;
+  align-items: center;
+  justify-content: flex-start; 
+}
+.rater-box {
+  font-size: 30rpx;
+  height: 30rpx;
+  /* width: 24rpx; */
+  line-height: 30rpx;
+  margin-right: 2rpx;
+  color: #ccc;
+}
+.rater-box.active{
+  color: #fc6;
+}
+.rater-box .rater-inner{
+  width: 100%;
+  height: 100%;
+  position: relative; 
+}
+.rater-box .rater-inner .rater-outer{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;  
+  color: #fc6; 
+  overflow: hidden;
+}

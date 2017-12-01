@@ -1,0 +1,245 @@
+/* pages/libraryshelves/borrowBook/index.wxss */
+page{
+  overflow-y: auto;
+  height: 100%;
+}
+.container{
+  position: absolute;
+  bottom: 100rpx;
+  width: 100%;
+  top: 0;
+  height: auto;
+  overflow: auto;
+}
+.book-detail-header{
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+.book-detail-header .book-image{
+  width: 210rpx;
+  height: 280rpx;
+  margin-left: 20rpx;
+  box-shadow: 2px 2px 2px rgb(200,200,200);
+}
+.book-detail-header .book-detail-author{
+  display: inline-block;
+  margin-left: 10px;
+}
+.book-detail-header .book-detail-author .title{
+  display: block;
+  color: rgb(61,61,61);
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+.book-detail-header .book-detail-author .author{
+  display: block;
+  color: rgb(116,177,187);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.book-detail-header .book-detail-author .look-reviews{
+  display: block;
+  font-size: 14px;
+}
+
+.book-summary{
+  padding-top: 20px;
+  height:50%;
+}
+.book-summary .book-summary-header,.book-status .book-status-header{
+  color: rgb(61,61,61);
+  font-weight: bold;
+  font-size: 14px;
+  padding-left: 20rpx;
+  padding-bottom: 10rpx;
+  height: 8%;
+}
+.book-summary .book-summary-content{
+  border-top: 1px solid rgb(200,200,200);
+  font-size: 12px;
+  color: rgb(135,135,135);
+  line-height: 25px;
+  max-height: 90%;
+  overflow: auto;
+  padding-top: 20rpx;
+  margin: 20rpx;
+  margin-top: 0;
+}
+.publish{
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color:  rgb(13,118,161);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  border-radius: 0;
+}
+.book-status .book-status-header{
+  padding-top: 30rpx;
+}
+.book-status .book-status-content {
+  border-top: 1rpx solid rgb(200,200,200);
+  font-size:30rpx;
+  color: rgb(135,135,135);
+  padding: 20rpx;
+}
+.book-status .book-status-content .canborrow{
+  display: inline-block;
+  margin-right: 30rpx;
+}
+.btn-group{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.btn-group .owner-btn{
+  width: 70%;
+  height: 100%;
+  font-size: 36rpx;
+  display: inline-block;
+  border-radius: 0;
+  padding: 0;
+  border: 0;
+  background-color: rgb(242,242,242);
+  line-height: 100rpx;
+  text-align: center;
+}
+.btn-group .borrow-btn{
+  width: 30%;
+  height: 100%;
+  display: inline-block;
+  background-color:  rgb(13,118,161);
+  font-size: 36rpx;
+  border-radius: 0;
+  padding: 0;
+  color: #fff;
+  line-height: 100rpx;
+  text-align: center;
+}
+.loading_box {
+  width: 100%;
+  text-align: center;
+  padding: 100rpx 0;
+  position: absolute;
+  top: 30%;
+  bottom: 30%;
+}
+.loading_box>view {
+  display: inline-block;
+}
+.loading { 
+  background-size: cover;
+  width: 50rpx;
+  height: 50rpx;
+  -webkit-animation: loading 1s steps(12, end) infinite;
+  animation: loading 1s steps(12, end) infinite;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+.form .mask{
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -100;
+  transition: height .2s ease-in-out;
+}
+.form .form-content{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background-color: #fff;
+  transition: all .2s ease-in-out;
+  overflow: hidden;
+  z-index: 100;
+  color: #666;
+  font-size: 40rpx;
+}
+
+.form.show .mask{
+  visibility: visible;
+  opacity: 1;
+  height: 60%;
+  z-index : 100;
+}
+.form.show .form-content{
+  height: 40%;
+}
+.form-content .input-item{
+  display: flex;
+  margin: 0 20rpx;
+  border-top: 1px solid #ccc;
+  height: 100rpx;
+  align-items: center;
+  justify-content: center;
+}
+.form-content .input-item:first-child{
+  border-top: 0;
+}
+.input-item text{
+  width: 20%;
+  font-size: 30rpx;
+}
+.input-item text{
+  width: 20%;
+  font-size: 30rpx;
+}
+.input-item wx-input{
+  display: inline-block;
+  width: 100%;
+  font-size: 30rpx;
+}
+.input-item:last-child{
+  margin-top: 10rpx;
+  border-top: 0;
+}
+.input-item .send{
+  border: 1px solid rgb(62,58,57);
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #fff;
+  color: rgb(87,86,84);
+  font-size: 30rpx;
+  text-align: center;
+  width: 200rpx;
+  border-radius: 5rpx;
+}
+.info {
+  color: rgb(217,59,38);
+  text-align: center;
+  width: 100%;
+  font-size: 25rpx;
+}

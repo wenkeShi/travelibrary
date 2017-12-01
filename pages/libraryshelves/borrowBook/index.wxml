@@ -1,0 +1,54 @@
+<!--pages/libraryshelves/borrowBook/index.wxml-->
+<block wx:if="{{loading}}">
+  <view class="loading_box">
+    <image class="loading load-img" src="../../../images/loading.png"></image>
+  </view>
+</block>
+<view wx:else class="container">
+  <view class="book-detail-header">
+    <image src="{{image}}" class="book-image"></image>
+    <view class="book-detail-author">
+      <text class="title">{{title}}</text>
+      <text class="author">{{author}}</text>
+      <text class="look-reviews">查看豆瓣评价</text>
+    </view>
+  </view>
+  <view class="book-summary">
+    <view class="book-summary-header">图书简介</view>
+    <view class="book-summary-content">{{summary || '找不到简介呢'}}</view>
+  </view>
+  <view class="book-status">
+    <view class="book-status-header">书籍状态</view>
+    <view class="book-status-content">
+      <text class="canborrow">可借阅数量：{{canBorrow}}本</text>
+      <text class="total">漂流总数量：{{total}}本</text>
+    </view>
+  </view>
+  <view class="btn-group" hidden="{{hidden}}">
+    <view class="owner-btn" bindtap="toOwnerPage">查看书主主页</view>
+    <view class="borrow-btn" bindtap="borrowBook">借阅</view>
+  </view>
+</view>
+<view class="form {{visible?'show':''}}" >
+  <view class="mask" bindtap="hiddenForm"></view>
+  <form bindsubmit="submit">
+    <view class="form-content">
+    <view class="input-item">
+      <text>微信号</text>
+      <input type="text" maxlength="25" placeholder='请输入微信号' name="wxNum" confirm-type="next"></input>
+    </view>
+    <view class="input-item">
+      <text>电   话</text>
+      <input type='number' maxlength="11"  placeholder='请输入手机号码' name="phoneNum" confirm-type="next"></input>
+    </view>
+    <view class="input-item">
+      <text>留   言</text>
+      <input type="text" placeholder="给书主的留言" maxlength='50' name="msg" confirm-type="done"> </input>
+    </view>
+    <view wx:if="{{infoVisible}}" class="info">请填写微信号和手机号</view>
+    <view class="input-item">
+      <button form-type="submit" class="send"> 发 送 </button>
+    </view>
+  </view>
+  </form>
+</view>

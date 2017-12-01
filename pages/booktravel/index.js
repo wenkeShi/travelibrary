@@ -1,21 +1,44 @@
 //index.js
 //获取应用实例
-const app = getApp()
-
+const app = getApp();
+const request = require('../../utils/util.js').request;
+let sessionId = wx.getStorageSync('sessionId'); 
+let URL ='https://liudongtushuguan.cn';
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    borrowMessage : [],
+    newBooks : [],
   },
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+  // bindViewTap: function() {
+  //   wx.navigateTo({
+  //     url: '../logs/logs'
+  //   })
+  // },
   onLoad: function () {
+    let that = this;
+    this.getBorrowMsgs();
+    this.getNewBooks();
+    wx.connectSocket({
+      url: 'wss://liudongtushuguan.cn/socket?sessionId=' + sessionId,
+    });
+    wx.onSocketOpen(function(res){
+
+    });
+    wx.onSocketMessage(function(res){
+      let msg = JSON.parse(res.data);
+      let msgs = that.data.borrowMessage;
+      msgs.unshift(msg);
+      that.setData({ borrowMessage: msgs});
+    });
+    wx.onSocketClose(function(res){
+      console.log('websocket closed');
+    });
+
     // request({
     //   url: 'https://liudongtushuguan.cn/login',
     //   method: 'GET',
@@ -59,6 +82,50 @@ Page({
       })
     }
   },
+  onShow: function(){
+    // wx.onSocketMessage(function (res) {
+    //   console.log('receive msg!');
+    //   console.log(res.data);
+    // })
+  },
+
+  getBorrowMsgs: function(){
+    let that = this;
+    request({
+      url: URL +'/message/borrowMsgs',
+      success :function(res){
+        if (res.statusCode == 200){
+          that.setData({
+            borrowMessage: res.data.borrowMessages,
+          });
+          wx.stopPullDownRefresh();
+          wx.hideNavigationBarLoading() //完成停止加载
+        }
+      }
+    });
+  },
+  //获取新书
+  getNewBooks : function(){
+    let that = this;
+    request({
+      url : URL + '/newbooks',
+      success  : function(res){
+        if(res.statusCode == 200){
+          that.setData({
+            newBooks: res.data.newPublishedBooks,
+          });
+        }
+      },
+    });
+  },
+  //点击新书跳转
+  toBorrowBook : function(e){
+    let isbn = e.currentTarget.dataset.isbn;
+    let bookId = e.currentTarget.dataset.bookid;
+    wx.navigateTo({
+      url: '../libraryshelves/borrowBook/index?isbn='+isbn+'&bookId='+bookId,
+    })
+  },
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -67,11 +134,11 @@ Page({
       hasUserInfo: true
     })
   },
-  getPhoneNumber: function (e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
-  },
+  // getPhoneNumber: function (e) {
+  //   console.log(e.detail.errMsg)
+  //   console.log(e.detail.iv)
+  //   console.log(e.detail.encryptedData)
+  // },
   scanBook : function (e) {
     wx.scanCode({
       success : (res) => {
@@ -87,5 +154,40 @@ Page({
         }
       },
     });
+  },
+  respond : function(e){
+    let dataset = e.currentTarget.dataset;
+    let index = dataset.index;
+    let type= dataset.type;
+    let msgs = this.data.borrowMessage;
+    let that = this;
+    let pageData = this.data;
+    let borrowMessage = pageData.borrowMessage[index];
+    wx.showNavigationBarLoading();
+    request({
+      url: URL + '/' + type,
+      method : 'POST',
+      data : {
+        borrower: borrowMessage.borrower,
+        //targetId: borrowMessage.targetId,
+        bookId: borrowMessage.bookId,
+        borrowerId: borrowMessage.borrowerId,
+      },
+      success : function(res){
+        if(res.statusCode == 200){
+          pageData.borrowMessage.splice(index, 1);
+          wx.hideNavigationBarLoading();
+          that.setData({
+            borrowMessage: pageData.borrowMessage,
+          });
+        }
+      },
+    });
+
+  },
+  onPullDownRefresh : function(){
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.getBorrowMsgs();
+    this.getNewBooks();
   },
 })

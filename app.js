@@ -102,5 +102,7 @@ App({
   
   globalData: {
     userInfo: 'init',
+    libraryUpdate : false,
+    myBookUpdate : false,
   }
 })

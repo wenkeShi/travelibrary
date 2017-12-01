@@ -1,14 +1,24 @@
 <!--pages/booktravel/bookdetails/index.wxml-->
-<view class="book-detail-header">
-  <image src="{{image}}" class="book-image"></image>
-  <view class="book-detail-author">
-    <text class="title">{{title}}</text>
-    <text class="author">{{author}}</text>
-    <text class="look-reviews">查看豆瓣评价</text>
+
+<block wx:if="{{loading}}">
+    <view class="loading_box">
+    <image class="loading1" src="../../../images/loading.png"></image>
+  </view> 
+</block>
+
+<block wx:else>
+  <view class="book-detail-header">
+    <image src="{{image}}" class="book-image"></image>
+    <view class="book-detail-author">
+      <text class="title">{{title}}</text>
+      <text class="author">{{author}}</text>
+      <text class="look-reviews">查看豆瓣评价</text>
+    </view>
   </view>
-</view>
-<view class="book-summary">
-  <text class="book-summary-header">图书简介</text>
-  <view class="book-summary-content">{{summary}}</view>
-</view>
-<button class="publish" bindtap="publishBook">确定发布</button>
+  <view class="book-summary">
+    <text class="book-summary-header">图书简介</text>
+    <view class="book-summary-content">{{summary || '找不到简介呢'}}</view>
+    <view class="publish" bindtap="publishBook"><text>确定发布</text></view>
+  </view>
+</block>
+

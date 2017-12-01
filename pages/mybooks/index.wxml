@@ -1,103 +1,86 @@
 <!--pages/page3/page3.wxml-->
-<import src="../../components/rater/rater.wxml" />
+<import src="../../templates/rater.wxml" />
 <view class="user-info">
   <block wx:if="{{userInfo}}">
     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </block>
 </view>
-<view class="user-books">
-  <scroll-view class="tab" scroll-x="true">
-    <view class="tab-item {{currentTab == 0 ? 'active':''}}" bindtap="switchNav" data-current="0">发布的图书</view>
-    <view class="tab-item {{currentTab == 1 ? 'active':''}}" bindtap="switchNav" data-current="1">借阅的图书</view>
-  </scroll-view>
-  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab">
-    <swiper-item>
-      <scroll-view wx:if="{{publishedBooks.length>0}}" class="container" scroll-y="true">
-        <view wx:for="{{publishedBooks}}" class="content">
-          <image class="book-image" src="{{item.image}}"></image>
-          <view class="book-introduce">
-            <view class="title">{{item.title}}</view>
-            <view class="rate"> 
-              <template is="rater" data="{{...$wux.rater[index]}}" />
-              <text>{{item.rate}}</text>
-            </view>
-            <view class="author">作者:{{item.author}}</view>
-            <view class="press">出版社:{{item.press}}</view>
-            <view class="status">
-              <view class="status-btn">申请借阅中...</view>
-              <text class="status-opr">归还书籍</text>
-            </view>
-          </view>
-        </view>
-        <view class="content">
-          <image class="book-image" src="../../images/books/book.jpg"></image>
-          <view class="book-introduce">
-            <view class="title">Are you okay?</view>
-            <view class="author">作者:okken</view>
-            <view class="press">出版社:somePress</view>
-            <view class="status">
-              <view class="status-btn">申请借阅中...</view>
-              <text class="status-opr">归还书籍</text>
+<block wx:if="{{loading1||loading2}}">
+  <view class="loading_box">
+    <image class="loading1" src="../../images/loading.png"></image>
+  </view> 
+</block>
+<block wx:else>
+  <view class="user-books" >
+    <scroll-view class="tab" scroll-x="true">
+      <view class="tab-item {{currentTab == 0 ? 'active':''}}" bindtap="switchNav" data-current="0">发布的图书</view>
+      <view class="tab-item {{currentTab == 1 ? 'active':''}}" bindtap="switchNav" data-current="1">借阅的图书</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="50" bindchange="switchTab" >
+      <swiper-item>
+        <block wx:if="{{publishedBooks}}">
+          <view  hidden="{{publishedBooks.length>0?false:true}}" class="container" scroll-y="true">
+            <view wx:for="{{publishedBooks}}" class="content">
+              <image class="book-image" src="{{item.image}}"></image>
+              <view class="book-introduce">
+                <view class="title">{{item.title}}</view>
+                <view class="rate"> 
+                  <template is="rater"  data="{{ ...{value:item.rate,cutPercent:item.rate%2/2*100} }}" />
+                  <text class="rate-avg">{{item.rate}}</text>
+                </view>
+                <view class="author">作者:{{item.author}}</view>
+                <view class="press">出版社:{{item.press}}</view>
+                <view class="status" wx:if="{{item.borrower}}">
+                  <view class="status-btn publish">
+                  <text class="borrower">{{item.borrower}}</text> 借阅中</view>
+                  <text class="status-opr" bindtap="receiveBook" data-bookid="{{item._id}}" data-index="{{index}}">收到书籍</text>
+                </view>
+              </view>
             </view>
           </view>
-        </view>
-
-
-      </scroll-view>
-      <text wx:else>还没有发布任何图书哦！</text>
-    </swiper-item>
-    <swiper-item>
-      <scroll-view class="container" scroll-y="true">
-        <view class="content">
-          <image class="book-image" src="../../images/books/book.jpg"></image>
-          <view class="book-introduce">
-            <view class="title">Are you okay?</view>
-            <view class="author">作者:okken</view>
-            <view class="press">出版社:somePress</view>
-            <view class="status">
-              <view class="status-btn">申请借阅中...</view>
-              <text class="status-opr">归还书籍</text>
+          <view hidden="{{publishedBooks.length>0?true:false}}" class="nodata">
+              <image src="../../images/no-data.png" class="nodata-img"></image>
+              <text class="nodata-desc">哦豁，啥子都没得...</text>
+          </view> 
+        </block>
+        <!-- <block wx:else>
+          <view class="loading_box">
+            <image class="loading1" src="../../images/loading.png"></image>
+          </view> 
+        </block> -->
+      </swiper-item>
+      <swiper-item>
+        <block wx:if="{{borrowedBooks}}">
+          <view  hidden="{{borrowedBooks.length>0?false:true}}" class="container" scroll-y="true">
+            <view wx:for="{{borrowedBooks}}" class="content">
+              <image class="book-image" src="{{item.image}}"></image>
+              <view class="book-introduce">
+                <view class="title">{{item.title}}</view>
+                <view class="rate"> 
+                  <template is="rater"  data="{{ ...{value:item.rate,cutPercent:item.rate%2/2*100} }}" />
+                  <text class="rate-avg">{{item.rate}}</text>
+                </view>
+                <view class="author">作者:{{item.author}}</view>
+                <view class="press">出版社:{{item.press}}</view>
+                <view class="status">
+                  <view class="status-btn borrow  {{item.borrowingStatus=='已归还'?'returned':(item.borrowingStatus =='借阅失败'?'failed':'')}}">{{item.borrowingStatus}}</view>
+                  <text class="status-opr" wx:if="{{item.borrowingStatus==='借阅中'}}" bindtap="returnBook" data-index="{{index}}"data-bookid="{{item.bookId}}">归还书籍</text>
+                </view>
+              </view>
             </view>
           </view>
-        </view>
-        <view class="content">
-          <image class="book-image" src="../../images/books/book.jpg"></image>
-          <view class="book-introduce">
-            <view class="title">Are you okay?</view>
-            <view class="author">作者:okken</view>
-            <view class="press">出版社:somePress</view>
-            <view class="status">
-              <view class="status-btn">申请借阅中...</view>
-              <text class="status-opr">归还书籍</text>
-            </view>
-          </view>
-        </view>
-        <view class="content">
-          <image class="book-image" src="../../images/books/book.jpg"></image>
-          <view class="book-introduce">
-            <view class="title">Are you okay?</view>
-            <view class="author">作者:okken</view>
-            <view class="press">出版社:somePress</view>
-            <view class="status">
-              <view class="status-btn">申请借阅中...</view>
-              <text class="status-opr">归还书籍</text>
-            </view>
-          </view>
-        </view>
-        <view class="content">
-          <image class="book-image" src="../../images/books/book.jpg"></image>
-          <view class="book-introduce">
-            <view class="title">Are you okay?</view>
-            <view class="author">作者:okken</view>
-            <view class="press">出版社:somePress</view>
-            <view class="status">
-              <view class="status-btn">申请借阅中...</view>
-              <text class="status-opr">归还书籍</text>
-            </view>
-          </view>
-        </view>
-      </scroll-view>
-    </swiper-item>
-  </swiper>
-</view>
+          <view hidden="{{borrowedBooks.length>0?true:false}}" class="nodata">
+              <image src="../../images/no-data.png" class="nodata-img"></image>
+              <text class="nodata-desc">哦豁，啥子都没得...</text>
+          </view> 
+        </block>
+        <!-- <block wx:else>
+          <view class="loading_box">
+            <image class="loading1" src="../../images/loading.png"></image>
+          </view> 
+        </block> -->
+      </swiper-item>
+    </swiper>
+  </view>
+</block>

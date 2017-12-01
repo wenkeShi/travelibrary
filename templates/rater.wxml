@@ -1,0 +1,47 @@
+<template name="rater">
+	<view class="rater-component" >
+		<block>
+			<view class="rater-box {{ value >= 2 ? 'active' : '' }}" >
+				<view class="rater-inner">
+					<text>★</text>
+					<view class="rater-outer" style="width: {{ cutPercent + '%'}}" wx:if="{{ cutPercent > 0 &&value<2}}">
+          <!-- 必须要text包起来，不知道为啥，如果不包，手机显示不出 -->
+            <text>★</text>      
+					</view>
+				</view>
+			</view>
+      <view class="rater-box {{ value >= 4 ? 'active' : '' }}" >
+				<view class="rater-inner">
+					<text>★</text>
+					<view class="rater-outer" style="width: {{ cutPercent + '%'}}" wx:if="{{ cutPercent > 0 &&value>2 && value<4}}">
+						<text>★</text>
+					</view>
+				</view>
+			</view>
+      <view class="rater-box {{ value >= 6 ? 'active' : '' }}">
+				<view class="rater-inner">
+					<text>★</text>
+					<view class="rater-outer" style="width: {{ cutPercent + '%'}}" wx:if="{{ cutPercent > 0 &&value>4 && value<6}}">
+						<text>★</text>
+					</view>
+				</view>
+			</view>
+      <view class="rater-box {{ value >= 8 ? 'active' : '' }}" >
+				<view class="rater-inner">
+					<text>★</text>
+					<view class="rater-outer" style="width: {{ cutPercent + '%'}}" wx:if="{{ cutPercent > 0  &&value>6&& value<8}}">
+						<text>★</text>
+					</view>
+				</view>
+			</view>
+      <view class="rater-box {{ value >= 10 ? 'active' : '' }}">
+				<view class="rater-inner">
+					<text>★</text>
+					<view class="rater-outer" style="width: {{ cutPercent + '%'}}" wx:if="{{ cutPercent > 0 &&value>8 && value<10}}">
+						<text>★</text>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</template>

@@ -1,25 +1,18 @@
-/* pages/page3/page3.wxss */
+/* pages/ownerPage.wxss */
 /* @import  '../../components/wux.wxss'; */
 page{
   background-color:rgb(250,250,250);
   height: 100%;
 }
-swiper-item{
-  overflow-y: auto;
-  height: auto;
-}
-swiper{
-  overflow-y: auto;
-}
+
 .user-info{
   display: flex;
   align-items: center;
   padding: 30rpx;
   background-color: #fff;
-  margin-bottom: 20rpx;
-  position: fixed;
-  top: 0;
   width: 100%;
+  height: 20%;
+  box-sizing: border-box;
 }
 .user-info .userinfo-avatar{
   border-radius: 50%;
@@ -28,74 +21,49 @@ swiper{
   margin-right: 30rpx;
 }
 
-.tab{
-  height: 80rpx;
-  display: flex;
-  background-color: #fff;
-  justify-content: space-around;
-  margin-bottom: 10rpx;
-}
-.tab .tab-item{
-  display: inline-block;
-  height: 80rpx;
-  line-height: 80rpx;
-  margin:0 40rpx;
-  font-size: 30rpx;
-  box-sizing: border-box;
-  color: #aaa;
-}
-.tab .tab-item.active{
-  color: rgb(225,113,98);
-  border-bottom: 6rpx solid rgb(225,113,98);
-}
+
+
+
 .user-books{
-  position: fixed;
-  top: 230rpx;
+  height: 80%;
+  overflow: auto;
   width: 100%;
-  bottom: 0;
-  height: auto;
 }
- .user-books .tab-content{
-   position: absolute;
-   top: 90rpx;
-   bottom: 0;
-   height : auto;
-   width: 100%;
- }
- .user-books .tab-content .container{
+
+ .user-books  .container{
    height: auto;
  }
- .user-books .tab-content .container .content{
+ .user-books  .container .content{
    display: flex;
    align-items: center;
    padding: 40rpx 0 40rpx 40rpx;
    border-bottom: 1px solid #eee;
  }
- .user-books .tab-content .container .content .book-introduce{
+ .user-books  .container .content .book-introduce{
    width: 500rpx;
    height: 300rpx;
    position: relative;
  }
- .user-books .tab-content .container .content .book-image{
+ .user-books  .container .content .book-image{
   width: 210rpx;
   height: 280rpx;
   box-shadow: 0rpx 0rpx 50rpx #aaa;
   margin-right: 40rpx;
  }
- .user-books .tab-content .container .content .rate{
+ .user-books  .container .content .rate{
   height: 60rpx;
  }
- .user-books .tab-content .container .content .rate-avg{
+ .user-books  .container .content .rate-avg{
   font-size: 30rpx;
   color: #666;
   vertical-align: bottom;
  }
- .user-books .tab-content .container .content .author{
+ .user-books  .container .content .author{
    font-size: 30rpx;
    color: #666;
    margin-bottom: 15rpx;
  }
- .user-books .tab-content .container .content .press{
+ .user-books  .container .content .press{
    font-size: 30rpx;
    color: #666;
    margin-bottom: 15rpx;
@@ -105,7 +73,7 @@ swiper{
    text-overflow: ellipsis;
    white-space: nowrap;
  }
- .user-books .tab-content .container .content .status{
+ .user-books  .container .content .status{
   height: 62rpx;
   width: 100%;
   position: absolute;
@@ -139,16 +107,14 @@ swiper{
     color: rgb(217,59,38);
     border: 1rpx solid rgb(217,59,38); 
    }
-  .user-books .tab-content .container .content .status .status-opr{
+  .user-books .container .content .status .status-opr{
     font-size: 25rpx;
     color: rgb(9,186,7);
     text-decoration: underline;
     margin-left: 40rpx;
   }
 
-  .wux-rater{
-    display: inline-block;
-  }
+ 
 
 
 .loading_box {

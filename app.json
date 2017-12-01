@@ -5,7 +5,9 @@
     "pages/libraryshelves/index",
     "pages/mybooks/index",
     "pages/booktravel/bookdetails/index",
-    "pages/booktravel/error/index"
+    "pages/booktravel/error/index",
+    "pages/libraryshelves/borrowBook/index",
+    "pages/ownerPage/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

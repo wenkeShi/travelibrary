@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "借阅图书",
   "enablePullDownRefresh": true,
   "backgroundColor": "#6A7D8F"
 }

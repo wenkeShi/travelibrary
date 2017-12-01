@@ -1,5 +1,6 @@
 // pages/booktravel/bookdetails/index.jscon
 const  request = require('../../../utils/util').request;
+const APP = getApp();
 console.log('bookDetails');
 Page({
 
@@ -15,6 +16,9 @@ Page({
     tags : '',
     summary : '',
     rate : '',
+    owner : '',
+    ownerImage : '',
+    loading : true,
   },
 
   /**
@@ -22,7 +26,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    let isbn = options.isbn
+    let isbn = options.isbn;
+    let owner = APP.globalData.userInfo.nickName;
+    let ownerImage = APP.globalData.userInfo.avatarUrl;
     wx.request({
       url: 'https://api.douban.com/v2/book/isbn/'+isbn,
       header: {
@@ -45,12 +51,17 @@ Page({
           tags : tags,
           summary : data.summary,
           rate: data.rating.average,
+          owner: owner,
+          ownerImage : ownerImage,
+          loading : false,
         });
       }
     })
   },
   publishBook: function (){
     console.log(this.data);
+    //删除loading属性
+    delete this.data.loading;
     let bookData = this.data;
     wx.showToast({
       title: '发布中...',
@@ -67,23 +78,25 @@ Page({
                 title: '发布成功',
                 icon: 'success',
                 success : function(){
+                  APP.globalData.myBookUpdate = true;  //跳转到tabbar也能刷新页面
                   setTimeout(() => {
                     wx.switchTab({
                       url: '../../mybooks/index',
                     });
-                  }, 1000);
+                  }, 2000);
                 }
               })
             }else{
               wx.showToast({
                 title: '发布失败',
-                icon: 'success',
+                image: '../../../images/cancel.png',
                 success: function () {
                   setTimeout(() => {
-                    wx.switchTab({
-                      url: '../../mybooks/index',
-                    });
-                  }, 1000);
+                    // wx.switchTab({
+                    //   url: '../../mybooks/index',
+                    // });
+                    wx.hideToast();
+                  }, 2000);
                 }
               })
             }
@@ -91,13 +104,11 @@ Page({
           fail : () => {
             wx.showToast({
               title: '发布失败',
-              icon: 'success',
+              image: '../../../images/cancel.png',
               success: function () {
                 setTimeout(() =>{
-                  wx.switchTab({
-                    url: '../../mybooks/index',
-                  });
-                },1000);
+                  wx.hideToast();
+                },2000);
               },
             });
           },
