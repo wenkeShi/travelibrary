@@ -32,9 +32,13 @@ page{
   font-size: 14px;
   margin-bottom: 25px;
 }
-.book-detail-header .book-detail-author .look-reviews{
+.book-detail-header .book-detail-author .rate{
   display: block;
-  font-size: 14px;
+  font-size: 12px;
+}
+.rate text{
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .book-summary{
