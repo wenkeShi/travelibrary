@@ -1,1 +1,22 @@
 /* pages/booktravel/error/index.wxss */
+page{
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+view{
+  width: 300rpx;
+}
+image{
+  width: 300rpx;
+  height: 300rpx;
+}
+text{
+  font-size: 30rpx;
+  color : rgb(210, 216, 221);
+  text-align:center;
+  width:100%;
+  display:inline-block;
+}

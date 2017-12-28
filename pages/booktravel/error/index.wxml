@@ -1,2 +1,6 @@
 <!--pages/booktravel/error/index.wxml-->
-<text>pages/booktravel/error/index.wxml</text>
+<view>
+  <image src="../../../images/error.png"></image>
+  <text>换个码试试...</text>
+</view>
+
