@@ -1,0 +1,24 @@
+/* testPages/test.wxss */
+page{
+  height: 100%;
+}
+.container {
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.header{
+  background-color: #ccc;
+  flex: 0 1 50rpx;
+}
+
+.content{
+  background-color: rgb(9, 186, 7);
+  flex: 1 1;
+  overflow: auto;
+}
+.child{
+  width: 100%;
+  height: 200rpx;
+}

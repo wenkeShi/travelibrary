@@ -7,13 +7,13 @@
 <swiper class="tab-content" current="{{currentTab}}" duration="50"  bindchange="switchTab">
   <!-- style="height:{{winHeight}}rpx"> -->
   <swiper-item wx:for="{{tags}}" wx:for-index="tagsIndex">
-    <view wx:if="{{showBooks[tagsIndex]?false:true}}">
+    <block wx:if="{{showBooks[tagsIndex]?false:true}}">
       <view class="loading_box">
         <image class="loading load-img" src="../../images/loading.png"></image>
       </view>
-    </view>
-    <view wx:else>
-      <view scroll-y="true" class="scoll-h" hidden="{{showBooks[tagsIndex].length>0?false:true}}" bindscrolltoupper="refresh" style="height : {{winHeight}}px">
+    </block>
+    <block wx:else>
+      <block scroll-y="true" class="scoll-h" wx:if="{{showBooks[tagsIndex].length>0?true:false}}" bindscrolltoupper="refresh" >
         <view wx:for="{{showBooks[tagsIndex]}}" class="book" bindtap="toBorrowBook" data-isbn = "{{item.isbn}}" data-bookId="{{item._id}}">
           <image src="{{item.image}}" class="book-image"></image>
           <view class="book-title">{{item.title}}</view> 
@@ -22,12 +22,12 @@
           <text class="rate-avg">{{item.rate}}</text>
           </view>
         </view>
-      </view>
-      <view hidden="{{showBooks[tagsIndex].length>0?true:false}}" class="nodata">
+      </block>
+      <view wx:else="{{showBooks[tagsIndex].length>0?false:true}}" class="nodata">
           <image src="../../images/no-data.png" class="nodata-img"></image>
           <text class="nodata-desc">哦豁，啥子都没得...</text>
       </view>
-    </view>
+    </block>
   </swiper-item>
 
 

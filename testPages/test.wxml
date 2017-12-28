@@ -1,0 +1,18 @@
+<!--testPages/test.wxml-->
+<view class="container">
+  <view class="header">header</view>
+  <view class="content">content
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+    <view class="child">1</view>
+  </view>
+</view>

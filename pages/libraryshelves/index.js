@@ -67,16 +67,9 @@ Page({
     winHeight: '',//窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    // expertList: [{ //假数据
-    //   img: "avatar.png",
-    //   name: "欢顔",
-    //   tag: "知名情感博主",
-    //   answer: 134,
-    //   listen: 2234
-    // }],
-    showBooks : [],
-    tags: ['全部', '文学', '流行', '文化', '生活', '经管', '科技','编程'],
-
+    showBooks : [], //获取的书籍
+    tags: ['全部', '文学', '流行', '文化', '生活', '经管', '科技','编程'], //书籍分类
+    currentPages : [], //记录当前tab分页查询当前page
   },
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -138,16 +131,21 @@ Page({
   footerTap : function (){
     
   },
-  getBooks : function(tag,index){
+  //tag : 种类
+  //index : 种类对应的索引
+  getBooks : function(tag,index,currentPage=0){
     let that = this;
     if(tag === '全部') tag = 'all';
     request({
-      url : URL+'books?tag='+tag ,
+      url : URL+'books?tag='+tag+'&currentPage='+currentPage,
       success : function(res){
         if(res.statusCode === 200){
-          that.data.showBooks[index] = res.data.books;
+          let showBooks = that.data.showBooks;
+          showBooks[index] = currentPage ? showBooks[index].concat(res.data.books) : res.data.books;
+          that.data.currentPages[index] = currentPage;
           that.setData({
-            showBooks : that.data.showBooks
+            showBooks : that.data.showBooks,
+            currentPages : that.data.currentPages
           });
           wx.stopPullDownRefresh();
           wx.hideNavigationBarLoading();
@@ -186,6 +184,11 @@ Page({
   refresh : function(){
     console.log('refresh');
     //wx.startPullDownRefresh();
+  },
+  onReachBottom : function(){
+    console.log('onReachBottom');
+  },
+  onPageScroll : function(){
+    console.log('onpageScroll');
   }
-
 })
