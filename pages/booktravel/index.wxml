@@ -28,6 +28,9 @@
 </view> -->
 <view class="main">
   <view class='introduce'>
+  <view class="book-icon">
+    <image src="../../images/book-icon.png"></image>
+  </view>
     <view class='paragraph'>流动图书馆是一个图书漂流和借阅工具，旨在共享闲置图书，并链接趣味相投的小伙伴。</view>
      <!-- <view class='paragraph'>为保障用户的利益及安全，流动图书馆目前仅限于金山集团内部范围使用</view>  -->
      <view class='paragraph'>漂流图书到公司或学校，结识志趣一致的TA，快来开始你的图书漂流之旅吧~</view>

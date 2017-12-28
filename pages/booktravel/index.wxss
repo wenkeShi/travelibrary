@@ -114,8 +114,15 @@
 }
 .introduce{
   width: 94%;
-  padding: 3%;
+  padding: 2%;
   padding-top: 8%
+}
+.book-icon{
+  text-align: center;
+}
+.book-icon image{
+  width: 100rpx;
+  height: 100rpx;
 }
 .paragraph{
   display: block;
