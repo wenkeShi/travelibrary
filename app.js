@@ -102,7 +102,7 @@ App({
   
   globalData: {
     userInfo: 'init',
-    libraryUpdate : false,
-    myBookUpdate : false,
+    libraryUpdate : false,  //借阅书架是否刷新  
+    myBookUpdate : false,   //我的图书是否刷新
   }
 })

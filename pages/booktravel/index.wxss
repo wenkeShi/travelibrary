@@ -111,6 +111,7 @@
   background-color: #fff;
   border-radius : 3px;
   box-shadow: 0 1px 5px #666;
+  margin-bottom: 60rpx;
 }
 .introduce{
   width: 94%;
@@ -134,9 +135,9 @@
   margin-bottom: 20px;
 }
 .scan{
-  margin:8%;
+  margin:6%;
   margin-bottom: 0;
-  padding-bottom: 15%;
+  padding-bottom: 10%;
 }
 .scan .scan-btn{
   background-color:#27272A;
@@ -148,12 +149,16 @@
   width: 100rpx;
   vertical-align: bottom;
 }
-.new-books .new-books-header{
+.new-books-header{
   display: flex;
   justify-content: space-between;
-  margin: 30rpx 0;
+  margin: 10rpx 20rpx;
+  padding: 5rpx;
+  border-left: 10rpx solid #27272A;
+  text-indent: 10rpx;
+  background-color: rgb(249,249,249);
 }
-.new-books .new-books-header .new-books-header-title{
+.new-books-header-title{
   margin-left: 2%;
   color: #363636;
   font-weight: bold;
@@ -169,4 +174,10 @@
   margin:0 5rpx;
   width: 100px;
   height: 150px;
+}
+.new-books-content{
+  margin-top : 20rpx;
+}
+.new-books-content image:first-child{
+  margin-left: 20rpx;
 }

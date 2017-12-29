@@ -3,6 +3,7 @@
 const app = getApp();
 const request = require('../../utils/util.js').request;
 let sessionId = wx.getStorageSync('sessionId'); 
+console.log('--------------'+sessionId);
 let URL ='https://liudongtushuguan.cn';
 Page({
   data: {
