@@ -1,16 +1,14 @@
 //index.js
 //获取应用实例
 const app = getApp();
-const request = require('../../utils/util.js').request;
-let sessionId = wx.getStorageSync('sessionId'); 
-console.log('--------------'+sessionId);
+const {request,session} = require('../../utils/util.js');
+let sessionId = session.sessionId;
 let URL ='https://liudongtushuguan.cn';
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     borrowMessage : [],
     newBooks : [],
   },
@@ -21,12 +19,36 @@ Page({
   //   })
   // },
   onLoad: function () {
-    let that = this;
-    this.getBorrowMsgs();
-    this.getNewBooks();
-    wx.connectSocket({
-      url: 'wss://liudongtushuguan.cn/socket?sessionId=' + sessionId,
-    });
+    let that = this; 
+    if (sessionId) {
+      login();
+    } else {
+      wx.login({
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          if (res.code) {
+            wx.request({
+              url: URL+'/register',
+              data: {
+                code: res.code,
+              },
+              success: function (res) {
+                if (res.statusCode == 200) {
+                  console.log(res.data);
+                  // wx.setStorageSync('sessionId', res.data.data.sessionId);
+                  session.sessionId = res.data.data.sessionId;
+                  // let sessionId = wx.getStorageSync('sessionId');
+                  // console.log('sessionId-------' + sessionId);
+                  login();
+                }
+              },
+            });
+          } else {
+            console.log(res.errMsg);
+          }
+        }
+      })
+    }
     wx.onSocketOpen(function(res){
 
     });
@@ -81,6 +103,24 @@ Page({
           })
         }
       })
+    }
+    function login(){
+      wx.request({
+        url: URL + '/login',
+        header: {
+          sessionId: session.sessionId,
+        },
+        success: function (res) {
+          if (res.statusCode == 200) {
+            console.log(res.data);
+            that.getBorrowMsgs();
+            that.getNewBooks();
+            wx.connectSocket({
+              url: 'wss://liudongtushuguan.cn/socket?sessionId=' + session.sessionId,
+            });
+          }
+        },
+      });
     }
   },
   onShow: function(){

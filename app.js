@@ -2,61 +2,61 @@
 App({
   onLaunch: function () {
     // 展示本地存储能力   
-    var logs = wx.getStorageSync('logs') || [];
-    var sessionId = wx.getStorageSync('sessionId');
-    console.log(sessionId);
-    logs.unshift(Date.now());
-    wx.setStorageSync('logs', logs);
+    // var logs = wx.getStorageSync('logs') || [];
+    // var sessionId = wx.getStorageSync('sessionId');
+    // console.log(sessionId);
+    // logs.unshift(Date.now());
+    // wx.setStorageSync('logs', logs);
     // 登录
-    if(sessionId){
-      wx.request({
-        url: 'https://liudongtushuguan.cn/login',
-        header : {
-          sessionId : sessionId,
-        },
-        success : function(res){
-          if (res.statusCode == 200) {
-            console.log(res.data);
-          }
-        },
-      });
-    }else{
-      wx.login({
-        success: res => {
-          // 发送 res.code 到后台换取 openId, sessionKey, unionId
-          if (res.code) {
-            wx.request({
-              url: 'https://liudongtushuguan.cn/login',
-              data: {
-                code: res.code,
-              },
-              // header :{sessionId:sessionId},
-              success: function (res) {
-                if (res.statusCode == 200) {
-                  console.log(res.data);
-                  wx.setStorageSync('sessionId',res.data.data.sessionId);
-                  let sessionId = wx.getStorageSync('sessionId');
-                  console.log('sessionId-------'+sessionId);
-                  wx.request({
-                    url: 'https://liudongtushuguan.cn/login',
-                    header: {
-                      sessionId: sessionId,
-                    },
-                    success: function (res) {
-                      if (res.statusCode == 200) {
-                        console.log(res.data);
-                      }
-                    },
-                  });
-                }
-              },
-            });
-          } else {
-            console.log(res.errMsg);
-          }
-        }
-      })
-    }
+    // if(sessionId){
+    //   wx.request({
+    //     url: 'https://liudongtushuguan.cn/login',
+    //     header : {
+    //       sessionId : sessionId,
+    //     },
+    //     success : function(res){
+    //       if (res.statusCode == 200) {
+    //         console.log(res.data);
+    //       }
+    //     },
+    //   });
+    // }else{
+    //   wx.login({
+    //     success: res => {
+    //       // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //       if (res.code) {
+    //         wx.request({
+    //           url: 'https://liudongtushuguan.cn/login',
+    //           data: {
+    //             code: res.code,
+    //           },
+    //           // header :{sessionId:sessionId},
+    //           success: function (res) {
+    //             if (res.statusCode == 200) {
+    //               console.log(res.data);
+    //               wx.setStorageSync('sessionId',res.data.data.sessionId);
+    //               let sessionId = wx.getStorageSync('sessionId');
+    //               console.log('sessionId-------'+sessionId);
+    //               wx.request({
+    //                 url: 'https://liudongtushuguan.cn/login',
+    //                 header: {
+    //                   sessionId: sessionId,
+    //                 },
+    //                 success: function (res) {
+    //                   if (res.statusCode == 200) {
+    //                     console.log(res.data);
+    //                   }
+    //                 },
+    //               });
+    //             }
+    //           },
+    //         });
+    //       } else {
+    //         console.log(res.errMsg);
+    //       }
+    //     }
+    //   })
+    // }
     // wx.login({
     //   success: res => {
     //     // 发送 res.code 到后台换取 openId, sessionKey, unionId

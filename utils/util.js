@@ -1,4 +1,4 @@
-let sessionId = wx.getStorageSync('sessionId');
+let session = { sessionId: wx.getStorageSync('sessionId')};
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -17,13 +17,14 @@ const formatNumber = n => {
 
 const request = (obj) => {
   if(obj.header){
-    obj.header.sessionId = sessionId;
+    obj.header.sessionId = session.sessionId;
   }else{
-    obj.header = {sessionId : sessionId};
+    obj.header = { sessionId: session.sessionId};
   }
   wx.request(obj);
 }
 module.exports = {
   formatTime: formatTime,
   request : request,
+  session: session,
 }
