@@ -48,12 +48,6 @@
   </view>
   <scroll-view scroll-x="true" class="new-books-content" style="white-space: nowrap">
     <image wx:for="{{newBooks}}" src="{{item.image}}" bindtap="toBorrowBook" data-isbn="{{item.isbn}}" data-bookid="{{item._id}}" class="new-book"></image>
-    <!-- <image src="" class="new-book" class="new-book">></image> -->
-    <!-- <image src="../../images/books/book.jpg" class="new-book">></image>
-    <image src="../../images/books/book.jpg" class="new-book">></image>
-    <image src="../../images/books/book.jpg" class="new-book">></image>
-    <image src="../../images/books/book.jpg" class="new-book">></image>
-    <image src="../../images/books/book.jpg" class="new-book">></image>  -->
   </scroll-view>
 </view>
 
