@@ -177,9 +177,6 @@ Page({
   //   console.log(e.detail.encryptedData)
   // },
   scanBook : function (e) {
-    // wx.navigateTo({
-    //   url: '../../testPages/test',
-    // });
     wx.scanCode({
       success : (res) => {
         console.log(res);
