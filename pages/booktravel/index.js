@@ -124,10 +124,6 @@ Page({
     }
   },
   onShow: function(){
-    // wx.onSocketMessage(function (res) {
-    //   console.log('receive msg!');
-    //   console.log(res.data);
-    // })
   },
 
   getBorrowMsgs: function(){
