@@ -1,10 +1,6 @@
 //app.js
 App({
   onLaunch: function () {
-    // wx.request({
-    //   url: 'https://api.douban.com/v2/movie/new_movies',
-    //   success : function(res){console.log(res)},
-    // })
     // 展示本地存储能力   
     // var logs = wx.getStorageSync('logs') || [];
     // var sessionId = wx.getStorageSync('sessionId');
