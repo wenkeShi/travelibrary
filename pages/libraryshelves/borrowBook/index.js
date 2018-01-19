@@ -41,7 +41,7 @@ Page({
     let that = this;
 
     wx.request({
-      url: 'https://api.douban.com/v2/book/isbn/' + isbn,
+      url: 'https://liudongtushuguan.cn/v2/book/isbn/' + isbn,
       header: {
         'Content-Type': 'json', //一个坑，必须要设为json
       },
