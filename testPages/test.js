@@ -1,4 +1,3 @@
-// testPages/test.js
 Page({
 
   /**
