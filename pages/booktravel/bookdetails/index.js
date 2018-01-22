@@ -1,4 +1,4 @@
-// pages/booktravel/bookdetails/index.jscon
+// pages/booktravel/bookdetails/index.js
 const  request = require('../../../utils/util').request;
 const APP = getApp();
 console.log('bookDetails');
