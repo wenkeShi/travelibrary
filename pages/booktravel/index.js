@@ -36,7 +36,6 @@ Page({
                   // wx.setStorageSync('sessionId', res.data.data.sessionId);
                   session.sessionId = res.data.data.sessionId;
                   // let sessionId = wx.getStorageSync('sessionId');
-                  // console.log('sessionId-------' + sessionId);
                   login();
                 }
               },
