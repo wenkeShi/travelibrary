@@ -1,4 +1,4 @@
-// // pages/page2.js
+// pages/page2.js
 const APP = getApp();
 const request = require('../../utils/util.js').request;
 const URL = 'https://liudongtushuguan.cn/';
@@ -48,7 +48,7 @@ Page({
     }
   },
   onLoad: function () {
-    console.log('books-----------');
+    // console.log('books-----------');
     this.getBooks(this.data.tags[0],0);
     var that = this;
     // 高度自适应
