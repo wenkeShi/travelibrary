@@ -56,7 +56,6 @@ Page({
       console.log('websocket closed');
     });
 
-    //   url: 'https://liudongtushuguan.cn/login',
     //   method: 'GET',
 
     //   success(data) {
