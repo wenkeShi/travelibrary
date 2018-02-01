@@ -56,7 +56,6 @@ Page({
       console.log('websocket closed');
     });
 
-    //   method: 'GET',
 
     //   success(data) {
     //     console.log('success', data);
