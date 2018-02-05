@@ -57,7 +57,6 @@ Page({
     });
 
 
-    //     console.log('success', data);
     //   },
 
     //   fail(error) {
