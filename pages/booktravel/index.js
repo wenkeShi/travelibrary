@@ -59,7 +59,6 @@ Page({
 
 
 
-    //     console.log('complete', what);
     //   },
     // });
     // if (app.globalData.userInfo) {
