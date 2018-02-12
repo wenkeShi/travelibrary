@@ -59,7 +59,6 @@ Page({
 
 
 
-    //   },
     // });
     // if (app.globalData.userInfo) {
     //   this.setData({
