@@ -59,7 +59,6 @@ Page({
 
 
 
-    //     hasUserInfo: true,
     //     userInfo: app.globalData.userInfo,
     //   })
     // } else if (this.data.canIUse){
