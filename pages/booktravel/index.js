@@ -59,7 +59,6 @@ Page({
 
 
 
-    //   this.setData({
     //     hasUserInfo: true,
     //     userInfo: app.globalData.userInfo,
     //   })
