@@ -55,7 +55,6 @@ Page({
     wx.onSocketClose(function(res){
       console.log('websocket closed');
     });
-    //   app.userInfoReadyCallback = res => {
     //     this.setData({
     //       userInfo: res.userInfo,
     //       hasUserInfo: true
