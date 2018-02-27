@@ -55,7 +55,6 @@ Page({
     wx.onSocketClose(function(res){
       console.log('websocket closed');
     });
-    //       hasUserInfo: true
     //     })
     //   }
     // } else {
