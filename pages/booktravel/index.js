@@ -55,7 +55,6 @@ Page({
     wx.onSocketClose(function(res){
       console.log('websocket closed');
     });
-    // } else {
     //   // 在没有 open-type=getUserInfo 版本的兼容处理
     //   wx.getUserInfo({
     //     success: res => {
