@@ -64,7 +64,6 @@ Page({
     //         hasUserInfo: true
     //       })
     //     }
-    //   })
     function login(){
       wx.request({
         url: URL + '/login',
