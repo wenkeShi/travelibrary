@@ -60,7 +60,6 @@ Page({
     //     success: res => {
     //       app.globalData.userInfo = res.userInfo
     //       this.setData({
-    //         userInfo: res.userInfo,
     function login(){
       wx.request({
         url: URL + '/login',
