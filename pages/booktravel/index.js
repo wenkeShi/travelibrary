@@ -56,7 +56,6 @@ Page({
       console.log('websocket closed');
     });
     //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
     function login(){
       wx.request({
         url: URL + '/login',
