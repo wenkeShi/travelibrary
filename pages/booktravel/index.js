@@ -55,7 +55,7 @@ Page({
     wx.onSocketClose(function(res){
       console.log('websocket closed');
     });
-    //   // 在没有 open-type=
+    //   // 在没有 open-type
     function login(){
       wx.request({
         url: URL + '/login',
