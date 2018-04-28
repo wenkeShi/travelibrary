@@ -168,7 +168,6 @@ Page({
     });
 
   },
-
   onPullDownRefresh : function(){
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.getBorrowMsgs();
