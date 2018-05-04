@@ -12,7 +12,7 @@ Page({
   },
   //事件处理函数
   // bindViewTap: function() {
-  // },
+  // }
   onLoad: function () {
     let that = this; 
     if (sessionId) {
