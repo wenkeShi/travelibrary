@@ -10,6 +10,7 @@ Page({
     borrowMessage : [],
     newBooks : [],
   },
+  
   //事件处理函数
   // bindViewTap: function() {
   // }
