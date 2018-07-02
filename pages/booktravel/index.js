@@ -107,7 +107,6 @@ Page({
       },
     });
   },
-  
   //点击新书跳转
   toBorrowBook : function(e){
     let isbn = e.currentTarget.dataset.isbn;
