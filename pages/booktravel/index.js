@@ -92,7 +92,6 @@ Page({
       }
     });
   },
-
   //获取新书
   getNewBooks : function(){
     let that = this;
