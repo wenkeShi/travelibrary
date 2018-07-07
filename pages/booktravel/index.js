@@ -92,6 +92,7 @@ Page({
       }
     });
   },
+  
   //获取新书
   getNewBooks : function(){
     let that = this;
@@ -106,7 +107,7 @@ Page({
       },
     });
   },
-  
+
   //点击新书跳转
   toBorrowBook : function(e){
     let isbn = e.currentTarget.dataset.isbn;
