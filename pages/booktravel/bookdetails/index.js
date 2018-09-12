@@ -38,6 +38,15 @@ Page({
         console.log(res.data);
         let data = res.data;
         let tags = '';
+
+        if(data.code == 6000) {
+          wx.redirectTo({
+            url: '../error/index',
+          });
+
+          return ;
+        }
+
         data.tags.forEach((v)=>{
           tags += v.name;
         });
